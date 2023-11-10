@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta https-equiv="X-UA-Compatible" content = "IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes Taking App</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/design.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/10.0.0/firebase-app.js" integrity="sha512-7fVZcRDen8iC8r8plgoGadxqpr6v1Phu5mYzw+eHHBWdEWs90Ay7RfgnixMu/NDdxHrInYHX+yIzcXXHgSx5dQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/10.0.0/firebase-database.min.js" integrity="sha512-Zg6zXb908c4Mn+GSkMkDgl/OrQBWxC4VIxjvB6kBfQnlRK89nGojjAVEXU7IkMlsFgsxguZ489b1VlQd5aE8wA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore-compat.js"></script>
+    <script type = 'module' src = 'scripts/controllers/notes-controller.js'></script>
+</head>
+<body>
+    <div class = 'container'>
+        <h1 class = 'alert alert-info text-center'>
+            <i class="fa-solid fa-clipboard me-4" style = 'color:rgb(158, 108, 0)'></i>
+            Notes Taking App
+        </h1>
+        <div class="form-group">
+            <label>Id</label>
+            <input id = "id" class = "form-control" type ='text' placeholder = 'Type ID Here'/>
+        </div>
+        <div class="form-group">
+            <label>Title</label>
+            <input id = "title" class = "form-control" type ='text' placeholder = 'Type Title Here'/>
+        </div>
+        <div class="form-group">
+            <label>Description</label>
+            <textarea id = "desc" class = 'form-control' rows = '5' cols = '20' placeholder="Enter the Description Here">
+            </textarea>
+        </div>
+        <div class="form-group">
+            <label>Completion Date</label>
+            <input id = "cdate" class = "form-control" type ='date' />
+        </div>
+        <div class="form-group">
+            <label>Importance</label>
+            <input id = "importance" class = "form-control" type ='color'/>
+        </div>
+        <div class = 'text-center p-4'>
+            <button id = 'add' class = 'btn border-2 btn-outline-primary'>Add</button>
+            <button id = 'delete' class = 'btn border-2 btn-outline-danger'>Delete</button>
+            <button class = 'btn border-2 btn-outline-info'>Search</button>
+            <button class = 'btn border-2 btn-outline-success'>Sort</button>
+            <button class = 'btn border-2 btn-outline-warning'>Update</button>
+            <button class = 'btn border-2 btn-outline-success'>Save</button>
+            <button class = 'btn border-2 btn-outline-secondary'>Load</button>
+            <button class = 'btn border-2 btn-outline-danger'>Clear All</button>
+            <button class = 'btn border-2 btn-outline-success'>Save to Server</button>
+            <button class = 'btn border-2 btn-outline-secondary'>Load from Server</button>
+        </div>
+
+        <div>
+            <h3>Total Records: <span style = "color:red" id = "total"></span>; Mark Records: <span style = "color:red" id = "mark"></span>; UnMark Records: <span style = "color:red" id = "unmark"></span></h3>
+        </div>
+        <table class = "table table-bordered">
+            <thead class = 'table-dark'>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Completion Date</th>
+                    <th>Importance</th>
+                    <th>Operations</th>
+                </tr>
+            </thead>
+            <tbody id = 'notes'>
+                <!--Dynamic Records will be come here-->
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
